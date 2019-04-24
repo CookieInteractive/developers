@@ -26,4 +26,4 @@ function includeRouter(cb) {
       xhttp.send();
     }
   });
-}
+};
