@@ -13,7 +13,10 @@
     <footer include-html="/static/html/footer.html"></footer>
   </body>
   <script>
-    includeHTML();
-    includeRouter();
+    includeHTML( function () {
+      includeRouter( function () {
+        // do something in the future
+      });
+    });
   </script>
 </html>
