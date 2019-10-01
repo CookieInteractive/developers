@@ -16,6 +16,16 @@ function includeRouter(cb) {
             setTimeout(function() {
               cb(e);
             }, 0)
+
+            comments = document.getElementById('disqus_thread');
+            if (comments) {
+              var d = document, s = d.createElement('script');
+              s.src = 'https://cookieinteractive.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+              comments.innerHTML = d;
+            }
+            
           }
           if (this.status == 404) {
             content.innerHTML = 'Page not found.';
