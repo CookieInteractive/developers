@@ -1,4 +1,4 @@
-function() { // DON'T EDIT BELOW THIS LINE
+function disqus() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');
 s.src = 'https://cookieinteractive.disqus.com/embed.js';
 s.setAttribute('data-timestamp', +new Date());
