@@ -16,7 +16,7 @@ function includeRouter(cb) {
             setTimeout(function() {
               cb(e);
             }, 0)
-
+            // added for disqus comments - start
             comments = document.getElementById('disqus_thread');
             if (comments) {
               var d = document, s = d.createElement('script');
@@ -25,7 +25,7 @@ function includeRouter(cb) {
               (d.head || d.body).appendChild(s);
               comments.innerHTML = d;
             }
-            
+            // added for disqus comments - end
           }
           if (this.status == 404) {
             content.innerHTML = 'Page not found.';
