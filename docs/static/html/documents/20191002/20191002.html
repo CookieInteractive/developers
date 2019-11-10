@@ -1,0 +1,60 @@
+<h1>Anki 의 Latex 에서 한글 수식 사용하기</h1>
+
+<div>
+  <ol>
+    <li>사용환경: 윈도우 10, MikTex</li>
+    <ol>
+      <li>MikTex 설치시</li>
+      <ol>
+        <li>나만사용으로 설치</li>
+        <ol>
+          <li>모든 사용자용으로 설치하면 아래 명령이 권한 문제로 실행되지 않았음</li>
+          <li>initexmf --edit-config-file updmap</li>
+          <li>해결법을 따라해봤는데 여전히 안되었음 <a href="https://tex.stackexchange.com/questions/51799/windows-api-error-5-access-is-denied-when-trying-to-compile-tikz-picture" target="_blank">(링크)</a></li>
+          <ol>
+            <li>모든 사용자용으로 설치했던것을 언인스톨 하고 나만사용으로 재설치 했지만 여전히 해결 안됨</li>
+            <li>cmd 에서 where initexmf 로 찾으면 파일이 2개 존재하는 것으로 나왔음</li>
+            <ol>
+              <li>C:\Windows\System32\initexmf.exe</li>
+              <li>C:\Users\***\AppData\Local\Programs\MiKTeX 2.9\miktex\bin\x64\initexmf.exe</li>
+            </ol>
+            <li>System32 폴더의 initexmf.exe 는 크기가 0 kb -> 이것을 삭제함 -> 해결</li>
+            <li>클린윈도우(가상머신)에서는 initexmf.exe 파일이 System32 에 없는 것으로 봐서 삭제해도 무방할 듯</li>
+          </ol>
+        </ol>
+        <li>"Install missing packages on the fly" 를 "No" 로 변경</li>
+      </ol>
+    </ol>
+    <li>MikTex 에서 업데이트가 필요</li>
+    <li>MikTex > Packages > 아래의 3 패키지를 검색 > 설치 > Cancel 버튼이 Close 로 바뀌면 완료</li>
+    <ol>
+      <li>성공한 방법</li>
+      <ol>
+        <li>새로운 노트 유형을 만든다</li>
+        <li>도구 > 노트타입관리 > 옵션 > \usepackage{kotex} 삽입</li>
+        <li>\text{한글} 을 이용. ex:> [$]\frac{\text{한글}}{\text{수식}}[/$]</li>
+      </ol>
+    </ol>
+    <ol>
+      <li>아래는 실패한 방법들 및 검색하면서 진행했던 내용들...</li>
+      <li>nanumtype1</li>
+      <li>uhc</li>
+
+      <li>\usepackage{kotex-utf} 삽입</li>
+      <li>! LaTeX Error: File `kotex-utf.sty' not found.</li>
+      <li>kotex-utf, xetexko, cjk-ko, kotex-plain 설치</li>
+
+      <li>\usepackage{xetexko} 삽입</li>
+      <li>! LaTeX Error: File `xetexko.sty' not found. 에러 -> xetexko 패키지 설치</li>
+      <li>! LaTeX Error: File `xparse.sty' not found. 에러 -> l3packages 패키지 설치</li>
+      <li>! LaTeX Error: File `expl3.sty' not found. 에러 -> l3kernel 패키지 설치</li>
+      <li>! LaTeX Error: File `l3backend-dvips.def' not found. 에러 -> l3backend 패키지 설치</li>
+      <li>! Fatal Package fontspec Error: The fontspec package requires either XeTeX or LuaTeX.</li>
+      <li>(fontspec) You must change your typesetting engine to, e.g., "xelatex" or "lualatex"instead of "latex" or "pdflatex".</li>
+      <li>kotex-utf</li>
+    </ol>
+  </ol>
+
+</div>
+
+<div id="disqus_thread"></div>
